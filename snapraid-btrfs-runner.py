@@ -364,7 +364,9 @@ def run():
     else:
         logging.info("Running sync...")
         try:
-            snapraid_btrfs_command("sync", snapraid_btrfs_args = snapraid_btrfs_args_extend)
+            snapraid_args_extend = {}
+            snapraid_args_extend["pre-hash"] = ""
+            snapraid_btrfs_command("sync", snapraid_args = snapraid_args_extend, snapraid_btrfs_args = snapraid_btrfs_args_extend)
         except subprocess.CalledProcessError as e:
             logging.error(e)
             finish(False)
