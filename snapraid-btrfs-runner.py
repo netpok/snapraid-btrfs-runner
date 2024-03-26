@@ -134,7 +134,7 @@ def send_email(success):
             log[-maxsize // 2:])
     body += log
 
-    msg = MIMEText(body, "plain", "utf-8")
+    msg = MIMEText("<pre>"+body+"</pre>", "html", "utf-8")
     msg["Subject"] = config["email"]["subject"] + \
         (" SUCCESS" if success else " ERROR")
     msg["From"] = config["email"]["from"]
